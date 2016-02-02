@@ -21,3 +21,21 @@ add_theme_support('custom-header');
 add_theme_support('post-thumbnails');
 
 add_theme_support('post-formats', array('aside', 'image', 'video'));
+
+function jimmy_widget_setup() {
+
+	register_sidebar(
+		array(
+			'name' => 'Main Sidebar',
+			'id' => 'sidebar-1',
+			'class' => 'custom-class',
+			'description' => 'simple widget description',
+			'before_widget' => '<aside id="%1s" class="widget %2s">',
+			'after_widget' => '</aside>',
+			'before_title' => '<h5 class="widget-title',
+			'after_title' => '</h5>',
+		)
+	);
+}
+
+add_action('widgets_init', 'jimmy_widget_setup');
